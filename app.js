@@ -57,6 +57,12 @@ const addDiamond = document.querySelector("#addDiamond")
 addDiamond.addEventListener("click", ()=>{
     drawDiamond(globalX,globalY)
 })
+const addElipse = document.querySelector("#addDiamond")
+addDiamond.addEventListener("click", ()=>{
+    console.log("ok")
+    drawElipse(globalX,globalY)
+})
+
 
 function drawDiamond(x,y){
     x=y=1
@@ -75,4 +81,13 @@ function drawDiamond(x,y){
     globalY = globalY+130
     const line = roughSVG.line(globalX+150,globalY+50-80,globalX+150,globalY+50+30-80)
     svg.appendChild(line)
+}
+
+function drawElipse(x,y){
+    const ellipse = roughSVG.ellipse(x,y,300,100,{
+        fill: 'rgba(0,50,200,0.6)',
+        hachureAngle: 6, // angle of hachure,
+        hachureGap: 4  
+    })
+    svg.appendChild(ellipse)
 }
