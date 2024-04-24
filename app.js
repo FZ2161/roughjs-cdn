@@ -55,17 +55,22 @@ function drawRect(x,y){
 
 const addDiamond = document.querySelector("#addDiamond")
 addDiamond.addEventListener("click", ()=>{
-    console.log(100/Math.sqrt(2))
     drawDiamond(globalX,globalY)
 })
 
 function drawDiamond(x,y){
     x=y=1
-    const test = roughSVG.rectangle(globalX+150,globalY+50+30-80,100/Math.sqrt(2),100/Math.sqrt(2),{
+    var d=100
+    var a=d/Math.sqrt(2)
+    var x=globalX+150-a/2
+    var y=globalY+((d/2)-(a/2))
+    var centerX = x+a/2
+    var centerY = y+a/2
+    const test = roughSVG.rectangle(x,y,a,a,{
         fill: 'rgba(255,0,200,0.6)',
         fillStyle: 'zigzag-line'    
     })
-    console.log("100/Math.sqrt(2)")
+    test.setAttribute("transform", `rotate(45,${centerX},${centerY})`)
     svg.appendChild(test)
     globalY = globalY+130
     const line = roughSVG.line(globalX+150,globalY+50-80,globalX+150,globalY+50+30-80)
